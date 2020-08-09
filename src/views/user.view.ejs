@@ -1,0 +1,59 @@
+<%- include('partials/_header') %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>No. Registro</th>
+                        <th>Nombre</th>
+                        <th>E-mail</th>
+                        <th>Telefono</th>
+                        <th>URL</th>
+                        <th>QR-Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                        <% for (let i = 0; i < data.length; i++) { %>
+                            <tr>
+                                <td><%= (i + 1) %></td>
+                                <td><%= data[i].name %></td>
+                                <td><%= data[i].email %></td>
+                                <td><%= data[i].phone %></td>
+                                <td><%= data[i].url %></td>
+                                <td><%= data[i].qrcode %></td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="post">
+                        <div class="form-group row">
+                            <label for="name" class="col-form-label">Nombre:</label>
+                            <input type="text" name="name" id="name" placeholder="Tu nombre" class="form-control">
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-form-label">E-mail:</label>
+                            <input type="text" name="email" id="email" placeholder="Tu E-mail" class="form-control">
+                        </div>
+                        <div class="form-group row">
+                            <label for="phone" class="col-form-label">Telefono:</label>
+                            <input type="text" name="phone" id="phone" placeholder="Tu telefono" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Guardar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/_footer') %>
